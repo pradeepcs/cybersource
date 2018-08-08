@@ -26,6 +26,22 @@ public class PaymentInterface {
 	}
 
 	public static Response authorize(String resourcePath, String req) throws Exception {
+		return performPaymentOperation(resourcePath, req);
+	}
+
+	public static Response settlement(String resourcePath, String req) throws Exception {
+		return performPaymentOperation(resourcePath, req);
+	}
+	
+	public static Response refund(String resourcePath, String req) throws Exception {
+		return performPaymentOperation(resourcePath, req);
+	}
+	
+	public static Response authReversal(String resourcePath, String req) throws Exception {
+		return performPaymentOperation(resourcePath, req);
+	}
+
+	private static Response performPaymentOperation(String resourcePath, String req) throws Exception {
 		Client client = ClientBuilder.newClient();
 		Response response = client.target(APP_PROP.getProperty("baseURL")+resourcePath).request()
 				.header("Authorization", "Bearer "+JWTGenerator.getJWToken(req))
@@ -34,31 +50,5 @@ public class PaymentInterface {
 		return response;
 	}
 
-	public static Response settlement(String resourcePath, String req) throws Exception {
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(APP_PROP.getProperty("baseURL")+resourcePath).request()
-				.header("Authorization", "Bearer "+JWTGenerator.getJWToken(req))
-				.header("Content-Type", MediaType.APPLICATION_JSON)
-				.post(Entity.entity(req, MediaType.APPLICATION_JSON));
-		return response;
-	}
-	
-	public static Response refund(String resourcePath, String req) throws Exception {
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(APP_PROP.getProperty("baseURL")+resourcePath).request()
-				.header("Authorization", "Bearer "+JWTGenerator.getJWToken(req))
-				.header("Content-Type", MediaType.APPLICATION_JSON)
-				.post(Entity.entity(req, MediaType.APPLICATION_JSON));
-		return response;
-	}
-	
-	public static Response authReversal(String resourcePath, String req) throws Exception {
-		Client client = ClientBuilder.newClient();
-		Response response = client.target(APP_PROP.getProperty("baseURL")+resourcePath).request()
-				.header("Authorization", "Bearer "+JWTGenerator.getJWToken(req))
-				.header("Content-Type", MediaType.APPLICATION_JSON)
-				.post(Entity.entity(req, MediaType.APPLICATION_JSON));
-		return response;
-	}
 	
 }
