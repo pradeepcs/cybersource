@@ -18,7 +18,7 @@ public class PaymentInterface {
 		APP_PROP.put("certificatePath", "d:/downloads/cspmid0001.p12");
 		APP_PROP.put("secret", "cspmid0001");
 		APP_PROP.put("merchantId", "cspmid0001");
-		APP_PROP.put("baseURL", "https://apitest.cybersource.com/pts");
+		APP_PROP.put("baseURL", "https://apitest.cybersource.com");
 	}
 	
 	public static void main(String[] args) throws Exception {
